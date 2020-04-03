@@ -1,8 +1,6 @@
 build/
 vendor/
 
-config.yaml
-
 ### Go
 *.test
 *.out
