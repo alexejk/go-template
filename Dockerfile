@@ -1,5 +1,5 @@
 
-FROM golang:1.14-alpine
+FROM golang:1.15.6-alpine
 
 # Build dependencies
 RUN apk --no-cache add alpine-sdk
