@@ -1,3 +1,3 @@
 module alexejk.io/go-template
 
-go 1.14
+go 1.19

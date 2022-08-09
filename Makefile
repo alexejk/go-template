@@ -22,14 +22,18 @@ all: clean generate-all lint test build-all package-all
 #--------------------------------
 
 .PHONY: lint
-lint:
+lint: pre-build
 	@echo "Linting code..."
-	@go vet ./...
+	@sh hack/linter.sh
 
 .PHONY: test
 test: pre-build
 	@echo "Running tests..."
-	@go test -coverprofile=build/coverage.txt -covermode=atomic ./...
+ifeq ($(CI), true)
+	@go test -short -coverprofile=build/coverage.txt -json ./... > build/test-report.json
+else
+	@go test -short -coverprofile=build/coverage.txt -covermode=atomic ./...
+endif
 
 #--------------------------------
 # Code generation steps
